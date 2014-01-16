@@ -42,7 +42,7 @@ are in the plugins folder in coleslaw's source directory."
 (defun load-config (&optional config-key (dir (user-homedir-pathname)))
   "Load the coleslaw configuration from DIR/.coleslawrc, using CONFIG-KEY
 if necessary. DIR is ~ by default."
-  (with-open-file (in (merge-pathnames ".coleslawrc" dir))
+  (with-open-file (in (merge-pathnames ".coleslawrc" dir) :external-format '(:utf-8))
     (let ((config-form (read in)))
       (if (symbolp (car config-form))
           ;; Single site config: ignore CONFIG-KEY.
