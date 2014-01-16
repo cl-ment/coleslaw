@@ -56,7 +56,9 @@
       (let ((meta (loop for line = (read-line in nil)
                      until (string= line ";;;;;")
                      appending (list (field-name line)
-                                     (aref (parse-field line) 0))))
+                                     (let ((fields (parse-field line)))
+                                       (and fields
+                                            (aref fields 0))))))
             (content (slurp-remainder in)))
         (setf (getf meta :tags) (read-tags (getf meta :tags)))
         (append meta (list :text content))))))
