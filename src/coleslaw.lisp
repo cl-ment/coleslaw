@@ -52,6 +52,8 @@ Additional args to render CONTENT can be passed via RENDER-ARGS."
   (ensure-directories-exist staging)
   (with-current-directory staging
     (dolist (dir (list (app-path "themes/~a/css" (theme *config*))
+                       (app-path "themes/~a/js" (theme *config*))
+                       (app-path "themes/~a/fonts" (theme *config*))
                        (merge-pathnames "static" (repo *config*))))
       (when (probe-file dir)
         (run-program "cp -R ~a ." dir)))
