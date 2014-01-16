@@ -2,6 +2,8 @@
 
 (defclass blog ()
   ((author      :initarg :author      :accessor author)
+   (firstname :initarg :firstname :accessor firstname)
+   (lastname :initarg :lastname :accessor lastname)
    (deploy-dir  :initarg :deploy-dir  :accessor deploy-dir)
    (domain      :initarg :domain      :accessor domain)
    (feeds       :initarg :feeds       :accessor feeds)
